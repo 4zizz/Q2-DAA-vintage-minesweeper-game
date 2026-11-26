@@ -1,0 +1,106 @@
+/* Lapisan tema vintage: papan perkamen di atas kayu, panel berbingkai kuningan */
+
+body {
+  background:
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.12) 0 2px, transparent 2px 190px),
+    linear-gradient(180deg, var(--bg-deep), var(--bg) 220px, var(--bg));
+}
+
+h2, .brand-text, .ttl, .home-mode-lbl, .stats .val, .card-title,
+.pill, .restart-pill, .diff-btn, .progress-num, .status-chip {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+/* Panel berbingkai kuningan */
+.topbar, .card, .stage, .home-card, .overlay-card {
+  background: var(--surface-1);
+  border: 3px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--sh-card), inset 0 0 0 2px rgba(0, 0, 0, 0.25);
+}
+.stage-head, .stage-foot { border-color: var(--border-soft); }
+.brand-mark { background: var(--green); border: 2px solid var(--green-2); }
+
+/* Tombol plakat */
+.pill, .restart-pill, .diff-btn, .home-mode-btn {
+  background: var(--surface-2);
+  color: var(--text);
+  border: 2px solid var(--border);
+  box-shadow: 0 3px 0 rgba(20, 10, 2, 0.45);
+}
+.pill:hover, .diff-btn:hover, .home-mode-btn:hover { background: var(--border-soft); }
+.pill:active, .restart-pill:active, .diff-btn:active, .home-mode-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(20, 10, 2, 0.45);
+}
+.pill.ghost { background: transparent; box-shadow: none; border-color: transparent; }
+.pill.green, .restart-pill {
+  background: linear-gradient(180deg, var(--green-hi), var(--green));
+  color: var(--on-brand);
+  border-color: var(--green-2);
+}
+.pill.green:hover, .restart-pill:hover { background: var(--green-hi); transform: none; }
+
+/* Chip & badge pakai kuningan */
+.status-chip, .card-title .badge, .overlay-card .badge {
+  background: rgba(232, 167, 53, 0.2);
+  color: var(--green);
+}
+.status-chip .led { background: var(--green); box-shadow: 0 0 0 3px rgba(232, 167, 53, 0.25); }
+.status-chip.lose, .card-title .badge.lose, .overlay-card .badge.lose {
+  background: rgba(217, 83, 74, 0.2);
+  color: var(--red);
+}
+.status-chip.lose .led { background: var(--red); box-shadow: 0 0 0 3px rgba(217, 83, 74, 0.25); }
+.progress-bar { background: linear-gradient(90deg, var(--green-2), var(--green-hi)); }
+.progress { background: rgba(0, 0, 0, 0.3); }
+.overlay { background: rgba(35, 20, 8, 0.7); }
+
+/* ===== Papan ===== */
+.board {
+  gap: 5px;
+  padding: 12px;
+  background: var(--ground);
+  border: 3px solid var(--tile-edge);
+  border-radius: 12px;
+  box-shadow: var(--sh-inset);
+}
+
+.cell {
+  border-radius: 6px;
+  background: linear-gradient(160deg, var(--surface-4) 0%, var(--surface-3) 45%, var(--tile-low) 100%);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -3px 0 var(--tile-edge),
+    0 2px 3px rgba(60, 35, 12, 0.35);
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--n7);
+}
+.cell:hover:not(.revealed):not(.flag) {
+  background: linear-gradient(160deg, #fff7e4, var(--surface-4) 50%, var(--surface-3));
+}
+.cell:active:not(.revealed) { transform: translateY(2px); box-shadow: inset 0 -1px 0 var(--tile-edge); }
+
+.cell.revealed {
+  background: var(--open);
+  box-shadow: inset 0 2px 5px rgba(60, 35, 12, 0.45);
+}
+.cell.flag {
+  background: linear-gradient(160deg, var(--surface-4), var(--surface-3) 50%, var(--tile-low));
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -3px 0 var(--tile-edge),
+    0 2px 3px rgba(60, 35, 12, 0.35);
+}
+.cell.flag .flag-ico { color: var(--red); }
+.cell.mine { background: var(--open); box-shadow: inset 0 2px 5px rgba(60, 35, 12, 0.45); }
+.cell.mine .mine-ico { color: var(--n7); }
+.cell.mine.exploded { background: var(--red); }
+.cell.mine.exploded .mine-ico { color: #fff3e0; }
+
+.switch.on { background: var(--green-2); }
+.switch.on::after { background: var(--on-brand); }
+:focus-visible { outline: 3px solid var(--green-hi); outline-offset: 2px; }
